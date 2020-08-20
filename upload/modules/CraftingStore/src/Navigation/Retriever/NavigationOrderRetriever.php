@@ -16,7 +16,7 @@ class NavigationOrderRetriever
     {
         $this->cache->setCache(CacheEnum::NAVBAR_ORDER);
 		if (!$this->cache->isCached(CacheEnum::NAVBAR_ORDER_CRAFTING_STORE)) {
-			$order = 10;
+			$order = 15;
 			$this->cache->store(CacheEnum::NAVBAR_ORDER_CRAFTING_STORE, $order);
 		} else {
 			$order = $this->cache->retrieve(CacheEnum::NAVBAR_ORDER_CRAFTING_STORE);
