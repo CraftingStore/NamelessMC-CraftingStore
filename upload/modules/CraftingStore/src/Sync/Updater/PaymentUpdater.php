@@ -22,7 +22,7 @@ class PaymentUpdater
                 $payment['timestamp'],
                 $payment['uuid'],
                 $payment['inGameName'],
-                $payment['packageName'],
+                $payment['packageName']
             );
         }
     }

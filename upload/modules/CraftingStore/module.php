@@ -62,7 +62,7 @@ class CraftingStoreModule extends Module {
 
 		parent::__construct($this, $name, $author, $moduleVersion, $namelessVersion);
 
-		$storePath = $this->cachedSettingRetriever->retrieve(SettingEnum::STORE_PATH, '/store');
+		$storePath = $this->cachedSettingRetriever->retrieve(SettingEnum::STORE_PATH, '/store', true);
 
 		// Pages
 		$pages->add('CraftingStore', $storePath, 'resources/view/store/index.php', 'craftingstore', true);

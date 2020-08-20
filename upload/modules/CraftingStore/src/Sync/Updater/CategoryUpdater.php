@@ -22,7 +22,7 @@ class CategoryUpdater
                 $category['order'],
                 $category['name'],
                 $category['description'],
-                $category['parentId'],
+                $category['parentId']
             );
         }
     }

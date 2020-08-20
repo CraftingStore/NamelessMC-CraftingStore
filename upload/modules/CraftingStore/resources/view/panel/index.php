@@ -2,6 +2,7 @@
 
 /** 
  * @var SettingRepository $settingRepository 
+ * @var Cache $cache
  * 
 */
 
@@ -57,6 +58,8 @@ if (isset($_POST) && !empty($_POST)) {
 			}
 
 			$settingRepository->createOrUpdateByName(SettingEnum::STORE_PATH, $storePathInput);
+			$cache->setCache(CacheGroupEnum::SETTING);
+			$cache->store(SettingEnum::STORE_PATH, $storePathInput);
 		} catch (Exception $e) {
 			$errors[] = $e->getMessage();
 		}
