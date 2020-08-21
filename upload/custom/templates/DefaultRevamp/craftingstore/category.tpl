@@ -1,77 +1,75 @@
 {include file='header.tpl'}
 {include file='navbar.tpl'}
 
-<div class="container">
-    <div class="card">
-        <div class="card-body">
-            <h2 style="display:inline">{$STORE} &raquo; {$ACTIVE_CATEGORY}</h2>
-            <a class="btn btn-primary float-lg-right" href="http://{$STORE_URL}" target="_blank">{$VIEW_FULL_STORE}</a>
+<h2 class="ui header">
+    {$STORE} &raquo; {$ACTIVE_CATEGORY}
+</h2>
 
-            <hr />
+<div class="ui stackable grid">
+    <div class="ui centered row">
+        <div class="ui sixteen wide column">
+            <div class="ui padded segment">
 
-            {include file='craftingstore/parts/nav.tpl'}
+                {include file='craftingstore/parts/nav.tpl'}
 
-            <hr />
-
-            {if isset($NO_PACKAGES)}
-                <div class="alert alert-info">
-                    {$NO_PACKAGES}
-                </div>
-            {else}
-                <div class="row">
-                    {assign var=i value=0}
-                    {foreach from=$PACKAGES item=package name=packageArray}
-                        <div class="col-md-4 mb-3">
-                            <div class="card text-center">
-                                <div class="card-body">
-                                    {if $package.image}
-                                        <img class="rounded" style="max-height: 150px; max-width: 150px;" src="{$package.image}" alt="{$package.name}">
-                                    {/if}
-
-                                    <hr />
-
-                                    <h5 class="card-title">{$package.name}</h5>
-                                    <div class="ui divider"></div>
-                                    {$package.price} {$CURRENCY}
-
-                                    <hr />
-
-                                    <button role="button" class="btn btn-primary" data-toggle="modal" data-target="#modal{$package.id}">
-                                        {$BUY} &raquo;
-                                    </button>
-                                </div>
+                <div class="ui bottom attached segment">
+                    {if isset($NO_PACKAGES)}
+                        <div class="ui icon message">
+                            <i class="info icon"></i>
+                            <div class="content">
+                                <p>{$NO_PACKAGES}</p>
                             </div>
-
-                            <div class="modal fade" id="modal{$package.id}" tabindex="-1" role="dialog" aria-labelledby="modal{$package.id}Label" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content" style="text-align: center;">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="modal{$package.id}Label">{$package.name}<span aria-hidden="true"> | {$package.price} {$CURRENCY}</span></h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            {if $package.image}
-                                                <img class="rounded" style="max-width: 200px; max-height: 200px" src="{$package.image}" alt="{$package.name}" />
-                                                <hr />
-                                            {/if}
-                                            <div class="forum_post">
-                                                {$package.description}
+                        </div>
+                    {else}
+                        <div class="ui centered stackable grid">
+                            {foreach from=$PACKAGES item=package}
+                                <div class="four wide column">
+                                    <div class="ui card" style="height: 100%">
+                                        {if $package.image}
+                                            <div class="image">
+                                                <img src="{$package.image}" alt="{$package.name}">
                                             </div>
+                                        {/if}
+                                        <div class="center aligned content">
+                                            <span class="header">{$package.name}</span>
+                                            <div class="ui divider"></div>
+                                            {$package.price} {$CURRENCY}
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" data-dismiss="modal">{$CLOSE}</button>
-                                            <a href="http://{$STORE_URL}/package/{$package.id}" target="_blank" rel="nofollow noopener" class="btn btn-success">{$BUY}</a>
+                                        <div class="ui bottom attached blue button" onClick="$('#modal{$package.id}').modal('show');">
+                                            {$BUY} &raquo;
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+
+                                <div class="ui small modal" id="modal{$package.id}">
+                                    <div class="header">
+                                        {$package.name} | {$package.price} {$CURRENCY}
+                                    </div>
+                                    <div class="{if $package.image}image {/if}content">
+                                        {if $package.image}
+                                            <div class="ui small image">
+                                                <img src="{$package.image}" alt="{$package.name}">
+                                            </div>
+                                        {/if}
+                                        <div class="description forum_post">
+                                            {$package.description}
+                                        </div>
+                                    </div>
+                                    <div class="actions">
+                                        <div class="ui red deny button">
+                                            {$CLOSE}
+                                        </div>
+                                        <a class="ui positive right labeled icon button" target="_blank" rel="nofollow noopener" href="http://{$STORE_URL}/package/{$package.id}">
+                                            {$BUY}
+                                            <i class="shopping cart icon"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            {/foreach}
                         </div>
-                        {assign var=i value=$i+1}
-                    {/foreach}
+                    {/if}
                 </div>
-            {/if}
+            </div>
         </div>
     </div>
 </div>
