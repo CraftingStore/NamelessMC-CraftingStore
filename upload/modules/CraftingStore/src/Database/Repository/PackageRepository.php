@@ -23,7 +23,7 @@ class PackageRepository
         $this->db->createQuery('TRUNCATE TABLE ' . DatabaseTableEnum::PREFIX . DatabaseTableEnum::PACKAGES);
     }
 
-    public function create(int $id, int $categoryId, int $order, string $name, string $price, string $description): void
+    public function create(int $id, int $categoryId, int $order, string $name, string $price, string $description, ?string $image): void
     {
         $this->queries->create(DatabaseTableEnum::PACKAGES, [
             'id' => $id,
@@ -31,7 +31,8 @@ class PackageRepository
             'order' => $order,
             'name' => $name,
             'price' => $price,
-            'description' => $description
+            'description' => $description,
+            'image' => $image
         ]);
     }
 

@@ -27,7 +27,8 @@ class PackageUpdater
                 $package['order'],
                 $package['name'],
                 $package['price'],
-                $package['description']
+                $package['description'],
+                $package['image']
             );
         }
     }
