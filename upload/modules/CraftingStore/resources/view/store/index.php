@@ -13,19 +13,19 @@ $storeUrl = $cachedSettingRetriever->retrieve(SettingEnum::STORE_URL, null);
 $storePath = $cachedSettingRetriever->retrieve(SettingEnum::STORE_PATH, '');
 
 if ($storeUrl === null) {
-	die('Please configure & sync CraftingStore from the dashboard.');
+    die('Please configure & sync CraftingStore from the dashboard.');
 }
 
 $categories = $categoryBuilder->build($storePath);
 
 $smarty->assign([
-	'STORE' => $craftingStoreLanguage->get('language', LanguageEnum::STORE),
-	'STORE_URL' => 'http://' . $storeUrl,
-	'VIEW_FULL_STORE' => $craftingStoreLanguage->get('language', LanguageEnum::VIEW_REMOTE_STORE),
-	'HOME' => $craftingStoreLanguage->get('language', LanguageEnum::HOME),
-	'HOME_URL' => URL::build($storePath),
-	'CATEGORIES' => $categories,
-	'CONTENT' => $content
+    'STORE' => $craftingStoreLanguage->get('language', LanguageEnum::STORE),
+    'STORE_URL' => 'http://' . $storeUrl,
+    'VIEW_FULL_STORE' => $craftingStoreLanguage->get('language', LanguageEnum::VIEW_REMOTE_STORE),
+    'HOME' => $craftingStoreLanguage->get('language', LanguageEnum::HOME),
+    'HOME_URL' => URL::build($storePath),
+    'CATEGORIES' => $categories,
+    'CONTENT' => $content
 ]);
 
 // Load modules + template
