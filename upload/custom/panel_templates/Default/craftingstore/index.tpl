@@ -90,14 +90,5 @@
 
 {include file='scripts.tpl'}
 
-{literal}
-<script>
-let elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
-elems.forEach(function(html) {
-  let switchery = new Switchery(html, {color: '#23923d', secondaryColor: '#e56464'});
-});
-</script>
-{{/literal}}
-
 </body>
 </html>
