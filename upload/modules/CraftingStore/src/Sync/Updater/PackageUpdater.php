@@ -20,6 +20,7 @@ class PackageUpdater
             if (!$package['enabled']) {
                 continue;
             }
+            
             $this->packageRepository->create(
                 $package['id'],
                 $package['categoryId'],

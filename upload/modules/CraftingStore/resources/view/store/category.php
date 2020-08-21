@@ -14,9 +14,9 @@ $page_title = Output::getClean($category->name);
 $categoryId = explode('/', $route);
 $categoryId = $categoryId[count($categoryId) - 1];
 
-if(!is_numeric($categoryId)) {
-	require_once(ROOT_PATH . '/404.php');
-	die();
+if (!is_numeric($categoryId)) {
+    require_once(ROOT_PATH . '/404.php');
+    die();
 }
 
 $categoryId = (int) $categoryId;
@@ -24,9 +24,9 @@ $categoryId = (int) $categoryId;
 // Query category
 $category = $categoryRepository->firstById($categoryId);
 
-if($category === null){
-	require_once(ROOT_PATH . '/404.php');
-	die();
+if ($category === null) {
+    require_once(ROOT_PATH . '/404.php');
+    die();
 }
 
 $content = $cachedSettingRetriever->retrieve(SettingEnum::STORE_CONTENT, '');
@@ -34,7 +34,7 @@ $storeUrl = $cachedSettingRetriever->retrieve(SettingEnum::STORE_URL, null);
 $storePath = $cachedSettingRetriever->retrieve(SettingEnum::STORE_PATH, '');
 
 if ($storeUrl === null) {
-	die('Please configure & sync CraftingStore from the dashboard.');
+    die('Please configure & sync CraftingStore from the dashboard.');
 }
 
 require_once(ROOT_PATH . '/core/templates/frontend_init.php');
@@ -44,35 +44,35 @@ $currency = $cachedSettingRetriever->retrieve(SettingEnum::STORE_CURRENCY, '');
 $categories = $categoryBuilder->build($storePath);
 $packages = $packageBuilder->build($categoryId);
 
-if(count($packages) === 0){
-	$smarty->assign('NO_PACKAGES', $craftingStoreLanguage->get('language', LanguageEnum::NO_PACKAGES));
+if (count($packages) === 0) {
+    $smarty->assign('NO_PACKAGES', $craftingStoreLanguage->get('language', LanguageEnum::NO_PACKAGES));
 } else {
-	$smarty->assign('PACKAGES', $packages);
+    $smarty->assign('PACKAGES', $packages);
 }
 
 $smarty->assign([
-	'ACTIVE_CATEGORY' => Output::getClean($category->name),
-	'BUY' => $craftingStoreLanguage->get('language', LanguageEnum::BUY),
-	'CLOSE' => $language->get('general', 'close'),
-	'CURRENCY' => $currency,
+    'ACTIVE_CATEGORY' => Output::getClean($category->name),
+    'BUY' => $craftingStoreLanguage->get('language', LanguageEnum::BUY),
+    'CLOSE' => $language->get('general', 'close'),
+    'CURRENCY' => $currency,
 ]);
 
 $smarty->assign([
-	'STORE' => $craftingStoreLanguage->get('language', LanguageEnum::STORE),
-	'STORE_URL' => $storeUrl,
-	'VIEW_FULL_STORE' => $craftingStoreLanguage->get('language', LanguageEnum::VIEW_REMOTE_STORE),
-	'HOME' => $craftingStoreLanguage->get('language', LanguageEnum::HOME),
-	'HOME_URL' => URL::build($storePath),
-	'CATEGORIES' => $categories,
-	'CONTENT' => $content
+    'STORE' => $craftingStoreLanguage->get('language', LanguageEnum::STORE),
+    'STORE_URL' => $storeUrl,
+    'VIEW_FULL_STORE' => $craftingStoreLanguage->get('language', LanguageEnum::VIEW_REMOTE_STORE),
+    'HOME' => $craftingStoreLanguage->get('language', LanguageEnum::HOME),
+    'HOME_URL' => URL::build($storePath),
+    'CATEGORIES' => $categories,
+    'CONTENT' => $content
 ]);
 
 $template->addCSSFiles([
-	(defined('CONFIG_PATH') ? CONFIG_PATH : '') . '/core/assets/plugins/ckeditor/plugins/spoiler/css/spoiler.css' => [],
+    (defined('CONFIG_PATH') ? CONFIG_PATH : '') . '/core/assets/plugins/ckeditor/plugins/spoiler/css/spoiler.css' => [],
 ]);
 
 $template->addJSFiles([
-	(defined('CONFIG_PATH') ? CONFIG_PATH : '') . '/core/assets/plugins/ckeditor/plugins/spoiler/js/spoiler.js' => []
+    (defined('CONFIG_PATH') ? CONFIG_PATH : '') . '/core/assets/plugins/ckeditor/plugins/spoiler/js/spoiler.js' => []
 ]);
 
 // Load modules + template

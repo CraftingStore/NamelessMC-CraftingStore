@@ -22,11 +22,13 @@ class InstallDatabaseFlow
             $charset = 'utf8mb4';
         }
 
-        if (!$engine || is_array($engine))
+        if (!$engine || is_array($engine)) {
             $engine = 'InnoDB';
+        }
 
-        if (!$charset || is_array($charset))
+        if (!$charset || is_array($charset)) {
             $charset = 'latin1';
+        }
 
         if (!$this->queries->tableExists(DatabaseTableEnum::CATEGORIES)) {
             try {
