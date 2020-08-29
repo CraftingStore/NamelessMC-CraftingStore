@@ -30,6 +30,8 @@ define('PARENT_PAGE', 'craftingstore');
 define('PANEL_PAGE', 'craftingstore_sync');
 require_once(ROOT_PATH . '/core/templates/backend_init.php');
 
+$page_title = $craftingStoreLanguage->get('language', LanguageEnum::CRAFTING_STORE);
+
 if ($fullSyncFlow->performFlow()) {
     $smarty->assign([
         'SUCCESS' => $craftingStoreLanguage->get('language', LanguageEnum::SYNCED),
