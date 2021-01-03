@@ -58,7 +58,7 @@ class CraftingStoreModule extends Module
 
         $name = 'CraftingStore';
         $author = 'CraftingStore';
-        $moduleVersion = '1.1';
+        $moduleVersion = '1.2';
         $namelessVersion = '2.0.0-pr9';
 
         parent::__construct($this, $name, $author, $moduleVersion, $namelessVersion);
