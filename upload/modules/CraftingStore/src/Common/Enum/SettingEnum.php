@@ -10,4 +10,6 @@ class SettingEnum
     public const STORE_NAME = 'store_name';
     public const STORE_URL = 'store_url';
     public const STORE_CURRENCY = 'store_currency';
+    public const NAVBAR_POSITION = 'navbar_position';
+    public const NAVBAR_ICON = 'craftingstore_icon';
 }
