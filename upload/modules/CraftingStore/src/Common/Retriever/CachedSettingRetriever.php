@@ -18,9 +18,12 @@ class CachedSettingRetriever
         $this->cache = $cache;
     }
 
-    public function retrieve(string $name, ?string $default = null, bool $defaultWhenNotCached = false): ?string
+    public function retrieve(string $name, ?string $default = null, bool $defaultWhenNotCached = false, ?string $cacheGroup = null): ?string
     {
-        $this->cache->setCache(CacheGroupEnum::SETTING);
+        if ($cacheGroup === null) {
+            $cacheGroup = CacheGroupEnum::SETTING;
+        }
+        $this->cache->setCache($cacheGroup);
         if ($this->cache->isCached($name)) {
             return $this->cache->retrieve($name);
         }
