@@ -5,7 +5,7 @@
  */
 
 if ($user->isLoggedIn()) {
-    if (!$user->canViewACP()) {
+    if (!$user->canViewStaffCP()) {
         Redirect::to(URL::build('/'));
         die();
     } else {

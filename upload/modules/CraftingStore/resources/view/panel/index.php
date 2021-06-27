@@ -13,7 +13,7 @@ define('PANEL_PAGE', 'craftingstore');
 $page_title = $craftingStoreLanguage->get('language', LanguageEnum::CRAFTING_STORE);
 
 if ($user->isLoggedIn()) {
-    if (!$user->canViewACP()) {
+    if (!$user->canViewStaffCP()) {
         Redirect::to(URL::build('/'));
         die();
     } else {
