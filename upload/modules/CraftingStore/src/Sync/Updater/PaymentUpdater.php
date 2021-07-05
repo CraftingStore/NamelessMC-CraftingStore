@@ -17,6 +17,10 @@ class PaymentUpdater
         $this->paymentRepository->truncate();
 
         foreach ($payments as $payment) {
+            if (empty($payment['packageName']) === true) {
+                continue;
+            }
+
             $this->paymentRepository->create(
                 $payment['price'] * 100,
                 $payment['timestamp'],
