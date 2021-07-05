@@ -17,6 +17,10 @@ class CategoryUpdater
         $this->categoryRepository->truncate();
 
         foreach ($categories as $category) {
+            if (($category['enabled'] ?? true) === false) {
+                continue;
+            }
+
             $this->categoryRepository->create(
                 $category['id'],
                 $category['order'],
