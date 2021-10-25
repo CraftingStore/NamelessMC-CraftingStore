@@ -2,7 +2,6 @@
 
 class CraftingStoreModule extends Module
 {
-
     /**
      * @var InstallDatabaseFlow
      */
@@ -58,8 +57,8 @@ class CraftingStoreModule extends Module
 
         $name = 'CraftingStore';
         $author = 'CraftingStore';
-        $moduleVersion = '1.8';
-        $namelessVersion = '2.0.0-pr11';
+        $moduleVersion = '1.9';
+        $namelessVersion = '2.0.0-pr12';
 
         parent::__construct($this, $name, $author, $moduleVersion, $namelessVersion);
 
@@ -83,7 +82,6 @@ class CraftingStoreModule extends Module
      */
     public function onPageLoad($user, $pages, $cache, $smarty, $navs, $widgets, $template)
     {
-
         // Permissions
         PermissionHandler::registerPermissions('CraftingStore', [
             PermissionEnum::DEFAULT => $this->language->get('moderator', 'staff_cp') . ' &raquo; ' . $this->craftingStoreLanguage->get('language', LanguageEnum::CRAFTING_STORE),
