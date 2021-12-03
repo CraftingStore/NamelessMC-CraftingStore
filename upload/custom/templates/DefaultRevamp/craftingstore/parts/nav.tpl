@@ -3,7 +3,7 @@
         {$HOME}
     </a>
     {foreach from=$CATEGORIES item=category}
-        {if count($category.subCategories)}
+        {if $category.subCategories != null && count($category.subCategories)}
             <div class="ui pointing dropdown link item">
                 <span class="text">{$category.name}</span>
                 <i class="dropdown icon"></i>
