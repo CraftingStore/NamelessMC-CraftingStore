@@ -8,7 +8,7 @@
                 <a class="nav-link" href="{$HOME_URL}">{$HOME}</a>
             </li>
             {foreach from=$CATEGORIES item=category}
-                {if count($category.subCategories)}
+                {if $category.subCategories != null && count($category.subCategories)}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
                             {$category.name}
