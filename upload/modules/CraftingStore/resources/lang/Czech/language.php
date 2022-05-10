@@ -1,6 +1,6 @@
 <?php
 
-$language_version = '2.0.0-pr7';
+$language_version = '2.0.0-pr12';
 
 $language = [
     LanguageEnum::CRAFTING_STORE => 'CraftingStore',
