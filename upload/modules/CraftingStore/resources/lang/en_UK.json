@@ -1,0 +1,17 @@
+{
+    "craftingstore\/craftingstore": "CraftingStore",
+    "craftingstore\/no_packages": "No Packages found",
+    "craftingstore\/settings": "Settings",
+    "craftingstore\/server_key": "Server key",
+    "craftingstore\/server_key_info": "You can find your server key at the Servers section of CraftingStore.",
+    "craftingstore\/store_index_content": "Store homepage content",
+    "craftingstore\/store_path": "Store path",
+    "craftingstore\/sync_store": "Sync store",
+    "craftingstore\/home": "Home",
+    "craftingstore\/buy": "Buy",
+    "craftingstore\/store": "Store",
+    "craftingstore\/view_remote_store": "View full store",
+    "craftingstore\/updated": "Updated successfully",
+    "craftingstore\/synced": "Synced successfully",
+    "craftingstore\/invalid_key": "The provided API key is not valid"
+}

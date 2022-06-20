@@ -57,8 +57,8 @@ class CraftingStoreModule extends Module
 
         $name = 'CraftingStore';
         $author = 'CraftingStore';
-        $moduleVersion = '1.11';
-        $namelessVersion = '2.0.0-pr12';
+        $moduleVersion = '1.12';
+        $namelessVersion = '2.0.0-pr13';
 
         parent::__construct($this, $name, $author, $moduleVersion, $namelessVersion);
 
@@ -84,13 +84,16 @@ class CraftingStoreModule extends Module
     {
         // Permissions
         PermissionHandler::registerPermissions('CraftingStore', [
-            PermissionEnum::DEFAULT => $this->language->get('moderator', 'staff_cp') . ' &raquo; ' . $this->craftingStoreLanguage->get('language', LanguageEnum::CRAFTING_STORE),
-            PermissionEnum::SETTINGS => $this->language->get('moderator', 'staff_cp') . ' &raquo; ' . $this->craftingStoreLanguage->get('language', LanguageEnum::SETTINGS),
+            PermissionEnum::DEFAULT => $this->language->get('moderator', 'staff_cp') . ' &raquo; ' . $this->craftingStoreLanguage->get(LanguageEnum::PREFIX, LanguageEnum::CRAFTING_STORE),
+            PermissionEnum::SETTINGS => $this->language->get('moderator', 'staff_cp') . ' &raquo; ' . $this->craftingStoreLanguage->get(LanguageEnum::PREFIX, LanguageEnum::SETTINGS),
         ]);
 
         // Navigation links
         $this->userNavigationBuilder->build($navs[NavigationEnum::USER_NAVIGATION]);
         $this->backendNavigationBuilder->build($navs[NavigationEnum::ADMIN_NAVIGATION], $user);
+    }
+	
+	public function getDebugInfo(): array {
     }
 
     private function install()

@@ -45,23 +45,23 @@ $categories = $categoryBuilder->build($storePath);
 $packages = $packageBuilder->build($categoryId);
 
 if (count($packages) === 0) {
-    $smarty->assign('NO_PACKAGES', $craftingStoreLanguage->get('language', LanguageEnum::NO_PACKAGES));
+    $smarty->assign('NO_PACKAGES', $craftingStoreLanguage->get(LanguageEnum::PREFIX, LanguageEnum::NO_PACKAGES));
 } else {
     $smarty->assign('PACKAGES', $packages);
 }
 
 $smarty->assign([
     'ACTIVE_CATEGORY' => Output::getClean($category->name),
-    'BUY' => $craftingStoreLanguage->get('language', LanguageEnum::BUY),
+    'BUY' => $craftingStoreLanguage->get(LanguageEnum::PREFIX, LanguageEnum::BUY),
     'CLOSE' => $language->get('general', 'close'),
     'CURRENCY' => $currency,
 ]);
 
 $smarty->assign([
-    'STORE' => $craftingStoreLanguage->get('language', LanguageEnum::STORE),
+    'STORE' => $craftingStoreLanguage->get(LanguageEnum::PREFIX, LanguageEnum::STORE),
     'STORE_URL' => $storeUrl,
-    'VIEW_FULL_STORE' => $craftingStoreLanguage->get('language', LanguageEnum::VIEW_REMOTE_STORE),
-    'HOME' => $craftingStoreLanguage->get('language', LanguageEnum::HOME),
+    'VIEW_FULL_STORE' => $craftingStoreLanguage->get(LanguageEnum::PREFIX, LanguageEnum::VIEW_REMOTE_STORE),
+    'HOME' => $craftingStoreLanguage->get(LanguageEnum::PREFIX, LanguageEnum::HOME),
     'HOME_URL' => URL::build($storePath),
     'CATEGORIES' => $categories,
     'CONTENT' => $content
@@ -76,7 +76,7 @@ $template->addJSFiles([
 ]);
 
 // Load modules + template
-Module::loadPage($user, $pages, $cache, $smarty, [$navigation, $cc_nav, $mod_nav], $widgets, $template);
+Module::loadPage($user, $pages, $cache, $smarty, [$navigation, $cc_nav, $staffcp_nav], $widgets, $template);
 
 $page_load = microtime(true) - $start;
 define('PAGE_LOAD_TIME', str_replace('{x}', round($page_load, 3), $language->get('general', 'page_loaded_in')));

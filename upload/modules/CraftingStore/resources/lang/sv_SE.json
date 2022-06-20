@@ -1,0 +1,17 @@
+{
+    "craftingstore\/craftingstore": "CraftingStore",
+    "craftingstore\/no_packages": "Inga paket hittades.",
+    "craftingstore\/settings": "Inställningar",
+    "craftingstore\/server_key": "Server Nyckel",
+    "craftingstore\/server_key_info": "Du kan hitta dina server nycklar på Server sektionen hos CraftingStore.",
+    "craftingstore\/store_index_content": "Butik Hemside Innehåll",
+    "craftingstore\/store_path": "Butik sökväg",
+    "craftingstore\/sync_store": "Synka Butik",
+    "craftingstore\/home": "Hem",
+    "craftingstore\/buy": "Köp",
+    "craftingstore\/store": "Butik",
+    "craftingstore\/view_remote_store": "Visa full butik",
+    "craftingstore\/updated": "Uppdateringen lyckades",
+    "craftingstore\/synced": "Synkronisering lyckades",
+    "craftingstore\/invalid_key": "API Nyckeln är ogiltig."
+}
