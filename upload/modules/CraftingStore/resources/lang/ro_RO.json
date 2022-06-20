@@ -1,0 +1,17 @@
+{
+    "craftingstore\/craftingstore": "CraftingStore",
+    "craftingstore\/no_packages": "Nu a fost gasit nici un pachet.",
+    "craftingstore\/settings": "Setari",
+    "craftingstore\/server_key": "Cheie server",
+    "craftingstore\/server_key_info": "Poti gasi cheia serverului tau la sectiunea \"Servers\" pe CraftingStore.",
+    "craftingstore\/store_index_content": "Continut pagina principala magazin",
+    "craftingstore\/store_path": "Cale magazin",
+    "craftingstore\/sync_store": "Sincronizare magazin",
+    "craftingstore\/home": "Acasa",
+    "craftingstore\/buy": "Cumpara",
+    "craftingstore\/store": "Magazin",
+    "craftingstore\/view_remote_store": "Vezi tot magazinul",
+    "craftingstore\/updated": "Actualizat cu succes.",
+    "craftingstore\/synced": "Sincronizare completa.",
+    "craftingstore\/invalid_key": "Cheia API specificata nu este valida."
+}

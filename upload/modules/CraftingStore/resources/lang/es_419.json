@@ -1,0 +1,17 @@
+{
+    "craftingstore\/craftingstore": "CraftingStore",
+    "craftingstore\/no_packages": "No se han encontrado paquetes",
+    "craftingstore\/settings": "Ajustes",
+    "craftingstore\/server_key": "Clave del servidor",
+    "craftingstore\/server_key_info": "Puedes encontrar tu clave de servidor en la sección de servidores de CraftingStore.",
+    "craftingstore\/store_index_content": "Contenido de la página de inicio",
+    "craftingstore\/store_path": "Ruta de la tienda",
+    "craftingstore\/sync_store": "Sincronizar la tienda",
+    "craftingstore\/home": "Inicio",
+    "craftingstore\/buy": "Comprar",
+    "craftingstore\/store": "Tienda",
+    "craftingstore\/view_remote_store": "Ver tienda completa",
+    "craftingstore\/updated": "Actualizado con éxito",
+    "craftingstore\/synced": "Sincronizado con éxito",
+    "craftingstore\/invalid_key": "La clave API proporcionada no es válida"
+}

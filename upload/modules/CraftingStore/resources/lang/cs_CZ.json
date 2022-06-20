@@ -1,0 +1,17 @@
+{
+    "craftingstore\/craftingstore": "CraftingStore",
+    "craftingstore\/no_packages": "Nebyly nalezeny žádné balíčky",
+    "craftingstore\/settings": "Nastavení",
+    "craftingstore\/server_key": "Klíč serveru",
+    "craftingstore\/server_key_info": "Váš klíč můžete nalézt v sekci Servers v CraftingStore.",
+    "craftingstore\/store_index_content": "Obsah domovské stránky obchodu",
+    "craftingstore\/store_path": "Cesta k obchodu",
+    "craftingstore\/sync_store": "Synhronizovat obchod",
+    "craftingstore\/home": "Domů",
+    "craftingstore\/buy": "Zakoupit",
+    "craftingstore\/store": "Obchod",
+    "craftingstore\/view_remote_store": "Zobrazit celý obchod",
+    "craftingstore\/updated": "Úspěšně aktualizováno",
+    "craftingstore\/synced": "Úspěšně synchronizováno",
+    "craftingstore\/invalid_key": "Zadaný API klíč není platný"
+}

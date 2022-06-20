@@ -10,7 +10,7 @@ define('PAGE', 'panel');
 define('PARENT_PAGE', 'craftingstore');
 define('PANEL_PAGE', 'craftingstore');
 
-$page_title = $craftingStoreLanguage->get('language', LanguageEnum::CRAFTING_STORE);
+$page_title = $craftingStoreLanguage->get(LanguageEnum::PREFIX, LanguageEnum::CRAFTING_STORE);
 
 if ($user->isLoggedIn()) {
     if (!$user->canViewStaffCP()) {
@@ -64,7 +64,7 @@ if (isset($_POST) && !empty($_POST)) {
         }
 
         if (!count($errors)) {
-            $success = $craftingStoreLanguage->get('language', LanguageEnum::UPDATED);
+            $success = $craftingStoreLanguage->get(LanguageEnum::PREFIX, LanguageEnum::UPDATED);
         }
     } else {
         $errors[] = $language->get('general', 'invalid_token');
@@ -74,7 +74,7 @@ if (isset($_POST) && !empty($_POST)) {
 require_once(ROOT_PATH . '/core/templates/backend_init.php');
 
 // Load modules + template
-Module::loadPage($user, $pages, $cache, $smarty, [$navigation, $cc_nav, $mod_nav], $widgets);
+Module::loadPage($user, $pages, $cache, $smarty, [$navigation, $cc_nav, $staffcp_nav], $widgets, $template);
 
 if (isset($success)) {
     $smarty->assign([
@@ -94,27 +94,27 @@ $serverKey = $settingRepository->firstValueByName(SettingEnum::SERVER_KEY, '');
 $storeIndexContent = $settingRepository->firstValueByName(SettingEnum::STORE_CONTENT, '');
 $storePath = $settingRepository->firstValueByName(SettingEnum::STORE_PATH, '/store');
 
-$template->addJSFiles([
-    (defined('CONFIG_PATH') ? CONFIG_PATH : '') . '/core/assets/plugins/ckeditor/ckeditor.js' => [],
+$template->assets()->include([
+    AssetTree::TINYMCE,
 ]);
 
-$template->addJSScript(Input::createEditor('inputStoreContent', true));
+$template->addJSScript(Input::createTinyEditor($language, 'inputStoreContent', $storeIndexContent));
 
 $smarty->assign([
     'PARENT_PAGE' => PARENT_PAGE,
     'DASHBOARD' => $language->get('admin', 'dashboard'),
-    'CRAFTINGSTORE' => $craftingStoreLanguage->get('language', LanguageEnum::CRAFTING_STORE),
+    'CRAFTINGSTORE' => $craftingStoreLanguage->get(LanguageEnum::PREFIX, LanguageEnum::CRAFTING_STORE),
     'PAGE' => PANEL_PAGE,
     'TOKEN' => Token::get(),
     'SUBMIT' => $language->get('general', 'submit'),
-    'SETTINGS' => $craftingStoreLanguage->get('language', LanguageEnum::SETTINGS),
+    'SETTINGS' => $craftingStoreLanguage->get(LanguageEnum::PREFIX, LanguageEnum::SETTINGS),
     'INFO' => $language->get('general', 'info'),
-    'SERVER_KEY' => $craftingStoreLanguage->get('language', LanguageEnum::SERVER_KEY),
-    'SERVER_KEY_INFO' => $craftingStoreLanguage->get('language', LanguageEnum::SERVER_KEY_INFO),
+    'SERVER_KEY' => $craftingStoreLanguage->get(LanguageEnum::PREFIX, LanguageEnum::SERVER_KEY),
+    'SERVER_KEY_INFO' => $craftingStoreLanguage->get(LanguageEnum::PREFIX, LanguageEnum::SERVER_KEY_INFO),
     'SERVER_KEY_VALUE' => $serverKey,
-    'STORE_INDEX_CONTENT' => $craftingStoreLanguage->get('language', LanguageEnum::STORE_INDEX_CONTENT),
+    'STORE_INDEX_CONTENT' => $craftingStoreLanguage->get(LanguageEnum::PREFIX, LanguageEnum::STORE_INDEX_CONTENT),
     'STORE_INDEX_CONTENT_VALUE' => $storeIndexContent,
-    'STORE_PATH' => $craftingStoreLanguage->get('language', LanguageEnum::STORE_PATH),
+    'STORE_PATH' => $craftingStoreLanguage->get(LanguageEnum::PREFIX, LanguageEnum::STORE_PATH),
     'STORE_PATH_VALUE' => $storePath
 ]);
 

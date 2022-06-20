@@ -28,8 +28,8 @@ class UserNavigationBuilder
     {
         $navigation->add(
             'craftingstore',
-            $this->craftingStoreLanguage->get('language', LanguageEnum::STORE),
-            URL::build($this->cachedSettingRetriever->retrieve(SettingEnum::STORE_PATH)),
+            $this->craftingStoreLanguage->get(LanguageEnum::PREFIX, LanguageEnum::STORE),
+            URL::build($this->cachedSettingRetriever->retrieve(SettingEnum::STORE_PATH, '/store')),
             $this->cachedSettingRetriever->retrieve(SettingEnum::NAVBAR_POSITION, 'top', true),
             null,
             $this->navigationOrderRetriever->retrieve(),
