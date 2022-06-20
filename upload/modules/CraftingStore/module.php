@@ -93,7 +93,9 @@ class CraftingStoreModule extends Module
         $this->backendNavigationBuilder->build($navs[NavigationEnum::ADMIN_NAVIGATION], $user);
     }
 	
-	public function getDebugInfo(): array {
+	public function getDebugInfo(): array
+    {
+        return [];
     }
 
     private function install()
