@@ -3,7 +3,6 @@ require_once(__DIR__ . '/classes.php');
 
 $db = DB::getInstance();
 $cache = new Cache();
-$queries = new Queries();
 
 $craftingStoreLanguage = new Language(__DIR__ . '/resources/lang', LANGUAGE);
 
