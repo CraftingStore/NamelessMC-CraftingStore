@@ -12,8 +12,6 @@ class InformationRetriever
         curl_setopt($ch, CURLOPT_URL, 'https://api.craftingstore.net/v7/information');
 
         $result = curl_exec($ch);
-        $result = json_decode($result, true);
-
-        return $result;
+        return json_decode($result, true);
     }
 }

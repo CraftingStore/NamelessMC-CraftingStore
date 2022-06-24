@@ -5,12 +5,12 @@ class CategoryBuilder
     /**
      * @var CategoryRepository
      */
-    protected $categoryRepository;
+    protected CategoryRepository $categoryRepository;
 
     /**
      * @var CategoryViewMapper
      */
-    protected $categoryViewMapper;
+    protected CategoryViewMapper $categoryViewMapper;
 
     public function __construct(CategoryRepository $categoryRepository, CategoryViewMapper $categoryViewMapper)
     {

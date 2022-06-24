@@ -2,30 +2,25 @@
 
 class PaymentRepository
 {
-    /**
-     * @var Queries
-     */
-    protected $queries;
 
     /**
      * @var DB
      */
-    protected $db;
+    protected DB $db;
 
-    public function __construct(Queries $queries, DB $db)
+    public function __construct(DB $db)
     {
-        $this->queries = $queries;
         $this->db = $db;
     }
 
     public function truncate(): void
     {
-        $this->db->createQuery('TRUNCATE TABLE ' . DatabaseTableEnum::PREFIX . DatabaseTableEnum::PAYMENTS);
+        $this->db->query('TRUNCATE TABLE ' . DatabaseTableEnum::PREFIX . DatabaseTableEnum::PAYMENTS);
     }
 
     public function create(int $price, int $timestamp, ?string $playerId, string $playerName, string $packageName): void
     {
-        $this->queries->create(DatabaseTableEnum::PAYMENTS, [
+        DB::getInstance()->insert(DatabaseTableEnum::PAYMENTS, [
             'price' => $price,
             'timestamp' => $timestamp,
             'player_uuid' => $playerId,

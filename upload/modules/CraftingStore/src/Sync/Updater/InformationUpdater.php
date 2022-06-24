@@ -5,7 +5,7 @@ class InformationUpdater
     /**
      * @var SettingRepository
      */
-    protected $settingRepository;
+    protected SettingRepository $settingRepository;
 
     public function __construct(SettingRepository $settingRepository)
     {

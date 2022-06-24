@@ -6,31 +6,27 @@
  *
 */
 
-define('PAGE', 'panel');
-define('PARENT_PAGE', 'craftingstore');
-define('PANEL_PAGE', 'craftingstore');
+const PAGE = 'panel';
+const PARENT_PAGE = 'craftingstore';
+const PANEL_PAGE = 'craftingstore';
 
 $page_title = $craftingStoreLanguage->get(LanguageEnum::PREFIX, LanguageEnum::CRAFTING_STORE);
 
 if ($user->isLoggedIn()) {
     if (!$user->canViewStaffCP()) {
         Redirect::to(URL::build('/'));
-        die();
     } else {
         if (!$user->isAdmLoggedIn()) {
             Redirect::to(URL::build('/panel/auth'));
-            die();
         } else {
             if (!$user->hasPermission(PermissionEnum::SETTINGS)) {
                 Redirect::to(URL::build('/panel'));
-                die();
             }
         }
     }
 } else {
     // Not logged in
     Redirect::to(URL::build('/login'));
-    die();
 }
 
 if (isset($_POST) && !empty($_POST)) {
@@ -117,9 +113,6 @@ $smarty->assign([
     'STORE_PATH' => $craftingStoreLanguage->get(LanguageEnum::PREFIX, LanguageEnum::STORE_PATH),
     'STORE_PATH_VALUE' => $storePath
 ]);
-
-$pageLoad = microtime(true) - $start;
-define('PAGE_LOAD_TIME', str_replace('{x}', round($pageLoad, 3), $language->get('general', 'page_loaded_in')));
 
 $template->onPageLoad();
 

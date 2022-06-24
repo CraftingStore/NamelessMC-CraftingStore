@@ -5,12 +5,12 @@ class UpdateCategoryFlow
     /**
      * @var CategoryUpdater
      */
-    protected $categoryUpdater;
+    protected CategoryUpdater $categoryUpdater;
 
     /**
      * @var CategoryRetriever
      */
-    protected $categoryRetriever;
+    protected CategoryRetriever $categoryRetriever;
 
     public function __construct(CategoryUpdater $categoryUpdater, CategoryRetriever $categoryRetriever)
     {

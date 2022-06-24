@@ -2,19 +2,10 @@
 
 class SettingRepository
 {
-    /**
-     * @var Queries
-     */
-    protected $queries;
-
-    public function __construct(Queries $queries)
-    {
-        $this->queries = $queries;
-    }
 
     public function firstValueByName(string $name, ?string $default = null): ?string
     {
-        $result = $this->queries->getWhere(DatabaseTableEnum::SETTINGS, ['name', '=', $name]);
+        $result = DB::getInstance()->get(DatabaseTableEnum::SETTINGS, ['name', '=', $name])->results();
         if (count($result)) {
             return $result[0]->value;
         }
@@ -23,14 +14,14 @@ class SettingRepository
 
     public function createOrUpdateByName(string $name, string $value): void
     {
-        $result = $this->queries->getWhere(DatabaseTableEnum::SETTINGS, ['name', '=', $name]);
+        $result = DB::getInstance()->get(DatabaseTableEnum::SETTINGS, ['name', '=', $name])->results();
 
         if (count($result)) {
-            $this->queries->update(DatabaseTableEnum::SETTINGS, $result[0]->id, [
+            DB::getInstance()->update(DatabaseTableEnum::SETTINGS, $result[0]->id, [
                 'value' => $value
             ]);
         } else {
-            $this->queries->create(DatabaseTableEnum::SETTINGS, [
+            DB::getInstance()->insert(DatabaseTableEnum::SETTINGS, [
                 'name' => $name,
                 'value' => $value
             ]);

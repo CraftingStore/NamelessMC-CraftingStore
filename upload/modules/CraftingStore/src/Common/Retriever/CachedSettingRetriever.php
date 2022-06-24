@@ -5,12 +5,12 @@ class CachedSettingRetriever
     /**
      * @var SettingRepository
      */
-    protected $settingRepository;
+    protected SettingRepository $settingRepository;
 
     /**
      * @var Cache
      */
-    protected $cache;
+    protected Cache $cache;
 
     public function __construct(SettingRepository $settingRepository, Cache $cache)
     {

@@ -4,30 +4,28 @@
  * @var FullSyncFlow $fullSyncFlow
  */
 
+const PAGE = 'panel';
+const PARENT_PAGE = 'craftingstore';
+const PANEL_PAGE = 'craftingstore_sync';
+$page_title = $craftingStoreLanguage->get(LanguageEnum::PREFIX, LanguageEnum::CRAFTING_STORE);
+
 if ($user->isLoggedIn()) {
     if (!$user->canViewStaffCP()) {
         Redirect::to(URL::build('/'));
-        die();
     } else {
         if (!$user->isAdmLoggedIn()) {
             Redirect::to(URL::build('/panel/auth'));
-            die();
         } else {
             if (!$user->hasPermission(PermissionEnum::SETTINGS)) {
                 Redirect::to(URL::build('/panel'));
-                die();
             }
         }
     }
 } else {
     // Not logged in
     Redirect::to(URL::build('/login'));
-    die();
 }
 
-define('PAGE', 'panel');
-define('PARENT_PAGE', 'craftingstore');
-define('PANEL_PAGE', 'craftingstore_sync');
 require_once(ROOT_PATH . '/core/templates/backend_init.php');
 
 if ($fullSyncFlow->performFlow()) {
@@ -52,9 +50,6 @@ $smarty->assign([
     'PAGE' => PANEL_PAGE,
     'FORCE_SYNC' => $craftingStoreLanguage->get(LanguageEnum::PREFIX, LanguageEnum::FORCE_SYNC)
 ]);
-
-$page_load = microtime(true) - $start;
-define('PAGE_LOAD_TIME', str_replace('{x}', round($page_load, 3), $language->get('general', 'page_loaded_in')));
 
 $template->onPageLoad();
 

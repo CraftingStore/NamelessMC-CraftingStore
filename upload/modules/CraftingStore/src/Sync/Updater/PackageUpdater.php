@@ -5,7 +5,7 @@ class PackageUpdater
     /**
      * @var PackageRepository
      */
-    protected $packageRepository;
+    protected PackageRepository $packageRepository;
 
     public function __construct(PackageRepository $packageRepository)
     {

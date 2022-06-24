@@ -5,17 +5,17 @@ class UserNavigationBuilder
     /**
      * @var NavigationOrderRetriever
      */
-    protected $navigationOrderRetriever;
+    protected NavigationOrderRetriever $navigationOrderRetriever;
 
     /**
      * @var CachedSettingRetriever
      */
-    protected $cachedSettingRetriever;
+    protected CachedSettingRetriever $cachedSettingRetriever;
 
     /**
      * @var Language
      */
-    protected $craftingStoreLanguage;
+    protected Language $craftingStoreLanguage;
 
     public function __construct(NavigationOrderRetriever $navigationOrderRetriever, CachedSettingRetriever $cachedSettingRetriever, Language $craftingStoreLanguage)
     {

@@ -2,35 +2,35 @@
 
 <body id="page-top">
 
-<!-- Wrapper -->
-<div id="wrapper">
+    <!-- Wrapper -->
+    <div id="wrapper">
 
-    <!-- Sidebar -->
-    {include file='sidebar.tpl'}
+        <!-- Sidebar -->
+        {include file='sidebar.tpl'}
 
-    <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
 
-        <!-- Main content -->
-        <div id="content">
+            <!-- Main content -->
+            <div id="content">
 
-            <!-- Topbar -->
-            {include file='navbar.tpl'}
+                <!-- Topbar -->
+                {include file='navbar.tpl'}
 
-            <!-- Begin Page Content -->
-            <div class="container-fluid">
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
 
-                <!-- Page Heading -->
-                <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">{$CRAFTINGSTORE}</h1>
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{$PANEL_INDEX}">{$DASHBOARD}</a></li>
-                        <li class="breadcrumb-item active">{$CRAFTINGSTORE}</li>
-                    </ol>
-                </div>
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">{$CRAFTINGSTORE}</h1>
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{$PANEL_INDEX}">{$DASHBOARD}</a></li>
+                            <li class="breadcrumb-item active">{$CRAFTINGSTORE}</li>
+                        </ol>
+                    </div>
 
-                <!-- Update Notification -->
-                {include file='includes/update.tpl'}
+                    <!-- Update Notification -->
+                    {include file='includes/update.tpl'}
 
                     <div class="card">
                         <div class="card-body">
@@ -65,24 +65,25 @@
                         </div>
                     </div>
 
-                <!-- Spacing -->
-                <div style="height:1rem;"></div>
+                    <!-- Spacing -->
+                    <div style="height:1rem;"></div>
 
-                <!-- End Page Content -->
+                    <!-- End Page Content -->
+                </div>
+
+                <!-- End Main Content -->
             </div>
 
-            <!-- End Main Content -->
+            {include file='footer.tpl'}
+
+            <!-- End Content Wrapper -->
         </div>
 
-        {include file='footer.tpl'}
-
-        <!-- End Content Wrapper -->
+        <!-- End Wrapper -->
     </div>
 
-    <!-- End Wrapper -->
-</div>
-
-{include file='scripts.tpl'}
+    {include file='scripts.tpl'}
 
 </body>
+
 </html>

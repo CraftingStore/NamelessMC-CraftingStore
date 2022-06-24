@@ -5,7 +5,7 @@ class PaymentUpdater
     /**
      * @var PaymentRepository
      */
-    protected $paymentRepository;
+    protected PaymentRepository $paymentRepository;
 
     public function __construct(PaymentRepository $paymentRepository)
     {

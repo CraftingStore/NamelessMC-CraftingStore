@@ -9,7 +9,6 @@ class LanguageEnum
     public const SETTINGS = 'settings';
     public const SERVER_KEY = 'server_key';
     public const SERVER_KEY_INFO = 'server_key_info';
-    public const ALLOW_GUESTS = 'store_index_content';
     public const STORE_INDEX_CONTENT = 'store_path';
     public const STORE_PATH = 'store_path';
     public const FORCE_SYNC = 'sync_store';

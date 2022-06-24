@@ -5,27 +5,32 @@ class FullSyncFlow
     /**
      * @var InformationRetriever
      */
-    protected $informationRetriever;
+    protected InformationRetriever $informationRetriever;
 
     /**
      * @var SettingRepository
      */
-    protected $settingRepository;
+    protected SettingRepository $settingRepository;
 
     /**
      * @var UpdateCategoryFlow
      */
-    protected $updateCategoryFlow;
+    protected UpdateCategoryFlow $updateCategoryFlow;
 
     /**
      * @var UpdatePackageFlow
      */
-    protected $updatePackageFlow;
+    protected UpdatePackageFlow $updatePackageFlow;
 
     /**
      * @var UpdatePaymentFlow
      */
-    protected $updatePaymentFlow;
+    protected UpdatePaymentFlow $updatePaymentFlow;
+
+    /**
+     * @var InformationUpdater
+     */
+    private InformationUpdater $informationUpdater;
 
     public function __construct(
         InformationRetriever $informationRetriever,
@@ -45,7 +50,7 @@ class FullSyncFlow
 
     public function performFlow(): bool
     {
-        $serverKey = $this->settingRepository->firstValueByName(SettingEnum::SERVER_KEY, null);
+        $serverKey = $this->settingRepository->firstValueByName(SettingEnum::SERVER_KEY);
         if ($serverKey === null) {
             return false;
         }

@@ -12,8 +12,6 @@ class CategoryRetriever
         curl_setopt($ch, CURLOPT_URL, 'https://api.craftingstore.net/v7/categories');
 
         $result = curl_exec($ch);
-        $result = json_decode($result, true);
-
-        return $result;
+        return json_decode($result, true);
     }
 }

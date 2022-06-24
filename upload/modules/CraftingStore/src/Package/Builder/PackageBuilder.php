@@ -5,12 +5,12 @@ class PackageBuilder
     /**
      * @var PackageRepository
      */
-    protected $packageRepository;
+    protected PackageRepository $packageRepository;
 
     /**
      * @var PackageViewMapper
      */
-    protected $packageViewMapper;
+    protected PackageViewMapper $packageViewMapper;
 
     public function __construct(PackageRepository $packageRepository, PackageViewMapper $packageViewMapper)
     {

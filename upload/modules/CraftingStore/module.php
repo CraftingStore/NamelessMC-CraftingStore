@@ -5,37 +5,37 @@ class CraftingStoreModule extends Module
     /**
      * @var InstallDatabaseFlow
      */
-    private $installDatabaseFlow;
+    private InstallDatabaseFlow $installDatabaseFlow;
 
     /**
      * @var UpdatePermissionFlow
      */
-    private $updatePermissionFlow;
+    private UpdatePermissionFlow $updatePermissionFlow;
 
     /**
      * @var BackendNavigationBuilder
      */
-    private $backendNavigationBuilder;
+    private BackendNavigationBuilder $backendNavigationBuilder;
 
     /**
      * @var UserNavigationBuilder
      */
-    private $userNavigationBuilder;
+    private UserNavigationBuilder $userNavigationBuilder;
 
     /**
      * @var Language
      */
-    private $language;
+    private Language $language;
 
     /**
      * @var Language
      */
-    private $craftingStoreLanguage;
+    private Language $craftingStoreLanguage;
 
     /**
      * @var CachedSettingRetriever
      */
-    private $cachedSettingRetriever;
+    private CachedSettingRetriever $cachedSettingRetriever;
 
     public function __construct(
         InstallDatabaseFlow $installDatabaseFlow,
@@ -71,16 +71,7 @@ class CraftingStoreModule extends Module
         $pages->add('CraftingStore', '/panel/craftingstore/sync', 'resources/view/panel/sync.php');
     }
 
-    /**
-     * @var User $user
-     * @var Pages $pages
-     * @var Cache $cache
-     * @var Smarty $smarty
-     * @var Navigation[] $navs
-     * @var Widget $widgets
-     * @var null $template
-     */
-    public function onPageLoad($user, $pages, $cache, $smarty, $navs, $widgets, $template)
+    public function onPageLoad(User $user, Pages $pages, Cache $cache, Smarty $smarty, $navs, Widgets $widgets, $template)
     {
         // Permissions
         PermissionHandler::registerPermissions('CraftingStore', [

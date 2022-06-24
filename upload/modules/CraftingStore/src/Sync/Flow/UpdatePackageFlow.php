@@ -5,12 +5,12 @@ class UpdatePackageFlow
     /**
      * @var PackageUpdater
      */
-    protected $packageUpdater;
+    protected PackageUpdater $packageUpdater;
 
     /**
      * @var PackageRetriever
      */
-    protected $packageRetriever;
+    protected PackageRetriever $packageRetriever;
 
     public function __construct(PackageUpdater $packageUpdater, PackageRetriever $packageRetriever)
     {

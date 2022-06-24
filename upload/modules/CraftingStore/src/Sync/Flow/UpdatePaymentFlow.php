@@ -5,12 +5,12 @@ class UpdatePaymentFlow
     /**
      * @var PaymentUpdater
      */
-    protected $paymentUpdater;
+    protected PaymentUpdater $paymentUpdater;
 
     /**
      * @var PaymentRetriever
      */
-    protected $paymentRetriever;
+    protected PaymentRetriever $paymentRetriever;
 
     public function __construct(PaymentUpdater $paymentUpdater, PaymentRetriever $paymentRetriever)
     {
