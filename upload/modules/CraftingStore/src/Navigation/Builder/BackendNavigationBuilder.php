@@ -18,19 +18,19 @@ class BackendNavigationBuilder
         $this->craftingStoreLanguage = $craftingStoreLanguage;
     }
 
-    public function build(Navigation $navigation, User $user): void
+    public function build(?Navigation $navigation, ?User $user): void
     {
-        if (defined('BACK_END')) {
-            if ($user->hasPermission(PermissionEnum::DEFAULT)) {
-                if ($user->hasPermission(PermissionEnum::SETTINGS)) {
-                    $order = $this->navigationOrderRetriever->retrieve();
+        if (!defined('BACK_END') || $navigation === null || $user === null) {
+            return;
+        }
 
-                    $navigation->add('craftingstore_divider', mb_strtoupper($this->craftingStoreLanguage->get(LanguageEnum::PREFIX, LanguageEnum::CRAFTING_STORE)), 'divider', 'top', null, $order, '');
-                    $navigation->add('craftingstore', $this->craftingStoreLanguage->get(LanguageEnum::PREFIX, LanguageEnum::SETTINGS), URL::build('/panel/craftingstore'), 'top', null, ($order + 0.1), '<i class="nav-icon fas fa-shopping-cart"></i>');
-                    $navigation->add('craftingstore_sync', $this->craftingStoreLanguage->get(LanguageEnum::PREFIX, LanguageEnum::FORCE_SYNC), URL::build('/panel/craftingstore/sync'), 'top', null, ($order + 0.2), '<i class="nav-icon fas fa-sync-alt"></i>');
-                    $navigation->add('craftingstore_remote', $this->craftingStoreLanguage->get(LanguageEnum::PREFIX, LanguageEnum::CRAFTING_STORE), 'https://dash.craftingstore.net/admin', 'top', '_blank', ($order + 0.3), '<i class="nav-icon fas fa-external-link-alt"></i>');
-                }
-            }
+        if ($user->hasPermission(PermissionEnum::DEFAULT) && $user->hasPermission(PermissionEnum::SETTINGS)) {
+            $order = $this->navigationOrderRetriever->retrieve();
+
+            $navigation->add('craftingstore_divider', mb_strtoupper($this->craftingStoreLanguage->get(LanguageEnum::PREFIX, LanguageEnum::CRAFTING_STORE)), 'divider', 'top', null, $order, '');
+            $navigation->add('craftingstore', $this->craftingStoreLanguage->get(LanguageEnum::PREFIX, LanguageEnum::SETTINGS), URL::build('/panel/craftingstore'), 'top', null, ($order + 0.1), '<i class="nav-icon fas fa-shopping-cart"></i>');
+            $navigation->add('craftingstore_sync', $this->craftingStoreLanguage->get(LanguageEnum::PREFIX, LanguageEnum::FORCE_SYNC), URL::build('/panel/craftingstore/sync'), 'top', null, ($order + 0.2), '<i class="nav-icon fas fa-sync-alt"></i>');
+            $navigation->add('craftingstore_remote', $this->craftingStoreLanguage->get(LanguageEnum::PREFIX, LanguageEnum::CRAFTING_STORE), 'https://dash.craftingstore.net/admin', 'top', '_blank', ($order + 0.3), '<i class="nav-icon fas fa-external-link-alt"></i>');
         }
     }
 }
