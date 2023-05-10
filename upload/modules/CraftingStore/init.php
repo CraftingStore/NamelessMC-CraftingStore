@@ -3,19 +3,18 @@ require_once(__DIR__ . '/classes.php');
 
 $db = DB::getInstance();
 $cache = new Cache();
-$queries = new Queries();
 
 $craftingStoreLanguage = new Language(__DIR__ . '/resources/lang', LANGUAGE);
 
-$settingRepository = new SettingRepository($queries);
-$paymentRepository = new PaymentRepository($queries, $db);
-$packageRepository = new PackageRepository($queries, $db);
-$categoryRepository = new CategoryRepository($queries, $db);
+$settingRepository = new SettingRepository($db);
+$paymentRepository = new PaymentRepository($db);
+$packageRepository = new PackageRepository($db);
+$categoryRepository = new CategoryRepository($db);
 
 $cachedSettingRetriever = new CachedSettingRetriever($settingRepository, $cache);
 
-$installDatabaseFlow = new InstallDatabaseFlow($queries);
-$updatePermissionFlow = new UpdatePermissionFlow($queries);
+$installDatabaseFlow = new InstallDatabaseFlow($db);
+$updatePermissionFlow = new UpdatePermissionFlow($db);
 $navigationOrderRetriever = new NavigationOrderRetriever($cache);
 $backendNavigationBuilder = new BackendNavigationBuilder($navigationOrderRetriever, $craftingStoreLanguage);
 $userNavigationBuilder = new UserNavigationBuilder($navigationOrderRetriever, $cachedSettingRetriever, $craftingStoreLanguage);

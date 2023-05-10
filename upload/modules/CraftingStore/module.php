@@ -2,40 +2,13 @@
 
 class CraftingStoreModule extends Module
 {
-    /**
-     * @var InstallDatabaseFlow
-     */
-    private $installDatabaseFlow;
-
-    /**
-     * @var UpdatePermissionFlow
-     */
-    private $updatePermissionFlow;
-
-    /**
-     * @var BackendNavigationBuilder
-     */
-    private $backendNavigationBuilder;
-
-    /**
-     * @var UserNavigationBuilder
-     */
-    private $userNavigationBuilder;
-
-    /**
-     * @var Language
-     */
-    private $language;
-
-    /**
-     * @var Language
-     */
-    private $craftingStoreLanguage;
-
-    /**
-     * @var CachedSettingRetriever
-     */
-    private $cachedSettingRetriever;
+    private InstallDatabaseFlow $installDatabaseFlow;
+    private UpdatePermissionFlow $updatePermissionFlow;
+    private BackendNavigationBuilder $backendNavigationBuilder;
+    private UserNavigationBuilder $userNavigationBuilder;
+    private Language $language;
+    private Language $craftingStoreLanguage;
+    private CachedSettingRetriever $cachedSettingRetriever;
 
     public function __construct(
         InstallDatabaseFlow $installDatabaseFlow,
@@ -57,8 +30,8 @@ class CraftingStoreModule extends Module
 
         $name = 'CraftingStore';
         $author = 'CraftingStore';
-        $moduleVersion = '1.13';
-        $namelessVersion = '2.0.2';
+        $moduleVersion = '1.14';
+        $namelessVersion = '2.1.0';
 
         parent::__construct($this, $name, $author, $moduleVersion, $namelessVersion);
 
@@ -80,7 +53,7 @@ class CraftingStoreModule extends Module
      * @var Widget $widgets
      * @var null $template
      */
-    public function onPageLoad($user, $pages, $cache, $smarty, $navs, $widgets, $template)
+     public function onPageLoad(User $user, Pages $pages, Cache $cache, Smarty $smarty, $navs, Widgets $widgets, $template)
     {
         // Permissions
         PermissionHandler::registerPermissions('CraftingStore', [

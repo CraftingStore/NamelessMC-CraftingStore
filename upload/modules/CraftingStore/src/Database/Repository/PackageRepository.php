@@ -2,30 +2,21 @@
 
 class PackageRepository
 {
-    /**
-     * @var Queries
-     */
-    protected $queries;
+    protected DB $db;
 
-    /**
-     * @var DB
-     */
-    protected $db;
-
-    public function __construct(Queries $queries, DB $db)
+    public function __construct(DB $db)
     {
-        $this->queries = $queries;
         $this->db = $db;
     }
 
     public function truncate(): void
     {
-        $this->db->createQuery('TRUNCATE TABLE ' . DatabaseTableEnum::PREFIX . DatabaseTableEnum::PACKAGES);
+        $this->db->query('TRUNCATE TABLE ' . DatabaseTableEnum::PREFIX . DatabaseTableEnum::PACKAGES);
     }
 
     public function create(int $id, int $categoryId, int $order, string $name, string $price, string $description, ?string $image): void
     {
-        $this->queries->create(DatabaseTableEnum::PACKAGES, [
+        $this->db->insert(DatabaseTableEnum::PACKAGES, [
             'id' => $id,
             'category_id' => $categoryId,
             'order' => $order,
@@ -38,6 +29,6 @@ class PackageRepository
 
     public function getByCategoryId(int $categoryId): array
     {
-        return $this->queries->getWhere(DatabaseTableEnum::PACKAGES, ['category_id', '=', $categoryId]);
+        return $this->db->get(DatabaseTableEnum::PACKAGES, ['category_id', '=', $categoryId])->results();
     }
 }

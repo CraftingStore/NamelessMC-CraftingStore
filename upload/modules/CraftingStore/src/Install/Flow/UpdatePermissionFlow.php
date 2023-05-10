@@ -2,26 +2,23 @@
 
 class UpdatePermissionFlow
 {
-    /**
-     * @var Queries
-     */
-    protected $queries;
+    protected DB $db;
 
-    public function __construct(Queries $queries)
+    public function __construct(DB $db)
     {
-        $this->queries = $queries;
+        $this->db = $db;
     }
 
     public function performFlow(): void
     {
-        $groupPermissions = $this->queries->getWhere('groups', ['id', '=', GroupEnum::ADMIN_GROUP]);
+        $groupPermissions = $this->db->get('groups', ['id', '=', GroupEnum::ADMIN_GROUP])->results();
         $groupPermissions = $groupPermissions[0]->permissions;
 
         $groupPermissions = json_decode($groupPermissions, true);
         $groupPermissions['admincp.craftingstore'] = 1;
         $groupPermissions['admincp.craftingstore.settings'] = 1;
 
-        $this->queries->update('groups', GroupEnum::ADMIN_GROUP, [
+        $this->db->update('groups', GroupEnum::ADMIN_GROUP, [
             'permissions' => json_encode($groupPermissions)
         ]);
 
