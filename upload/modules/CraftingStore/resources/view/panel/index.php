@@ -118,9 +118,6 @@ $smarty->assign([
     'STORE_PATH_VALUE' => $storePath
 ]);
 
-$pageLoad = microtime(true) - $start;
-define('PAGE_LOAD_TIME', str_replace('{x}', round($pageLoad, 3), $language->get('general', 'page_loaded_in')));
-
 $template->onPageLoad();
 
 require(ROOT_PATH . '/core/templates/panel_navbar.php');

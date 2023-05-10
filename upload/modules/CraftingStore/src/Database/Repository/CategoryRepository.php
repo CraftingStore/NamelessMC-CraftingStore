@@ -2,30 +2,21 @@
 
 class CategoryRepository
 {
-    /**
-     * @var Queries
-     */
-    protected $queries;
+    protected DB $db;
 
-    /**
-     * @var DB
-     */
-    protected $db;
-
-    public function __construct(Queries $queries, DB $db)
+    public function __construct(DB $db)
     {
-        $this->queries = $queries;
         $this->db = $db;
     }
 
     public function truncate(): void
     {
-        $this->db->createQuery('TRUNCATE TABLE ' . DatabaseTableEnum::PREFIX . DatabaseTableEnum::CATEGORIES);
+        $this->db->query('TRUNCATE TABLE ' . DatabaseTableEnum::PREFIX . DatabaseTableEnum::CATEGORIES);
     }
 
     public function create(int $id, int $order, string $name, ?string $description, ?int $parentCategory = null): void
     {
-        $this->queries->create(DatabaseTableEnum::CATEGORIES, [
+        $this->db->insert(DatabaseTableEnum::CATEGORIES, [
             'id' => $id,
             'order' => $order,
             'name' => $name,
@@ -36,16 +27,16 @@ class CategoryRepository
 
     public function getWithoutParentOrdered(): array
     {
-        return $this->queries->orderWhere(DatabaseTableEnum::CATEGORIES, 'parent_category IS NULL', '`order`', 'ASC');
+        return $this->db->orderWhere(DatabaseTableEnum::CATEGORIES, 'parent_category IS NULL', '`order`', 'ASC')->results();
     }
 
     public function getByParentCategoryId(int $parentCategoryId): array
     {
-        return $this->queries->getWhere(DatabaseTableEnum::CATEGORIES, ['parent_category', '=', $parentCategoryId]);
+        return $this->db->get(DatabaseTableEnum::CATEGORIES, ['parent_category', '=', $parentCategoryId])->results();
     }
 
     public function firstById(int $id): ?stdClass
     {
-        return $this->queries->getWhere(DatabaseTableEnum::CATEGORIES, ['id', '=', $id])[0] ?? null;
+        return $this->db->get(DatabaseTableEnum::CATEGORIES, ['id', '=', $id])->results()[0] ?? null;
     }
 }
